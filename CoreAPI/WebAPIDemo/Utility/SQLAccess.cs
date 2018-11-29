@@ -8,7 +8,6 @@ namespace WebAPIDemo.Utility
     {
         #region Declarations
         public SqlCommand cmd = null;
-
         #endregion
 
         #region Key Functions
