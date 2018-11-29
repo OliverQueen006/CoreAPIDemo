@@ -8,14 +8,16 @@ namespace WebAPIDemo.Utility
     {
         #region Declarations
         public SqlCommand cmd = null;
+        public SqlConnection conn = null;
         #endregion
 
         #region Key Functions
 
         #region ExecuteNonQuery 
-        public bool ExecuteNonQuery(SqlConnection conn, string Query)
+        public bool ExecuteNonQuery(string connstr, string Query)
         {
             bool result;
+            conn = new SqlConnection(connstr);
             cmd = new SqlCommand(Query, conn);
             try
             {
@@ -46,11 +48,12 @@ namespace WebAPIDemo.Utility
             return result;
         }
 
-        public object ExecuteNonQuery(SqlConnection conn, SqlCommand cmd)
+        public object ExecuteNonQuery(string connstr, SqlCommand cmd)
         {
             object obj = new object();
             try
             {
+                conn = new SqlConnection(connstr);
                 if (conn.State == ConnectionState.Closed)
                 {
                     conn.Open();
@@ -74,11 +77,12 @@ namespace WebAPIDemo.Utility
         #endregion
 
         #region ExecuteScalarQuery 
-        public object ExecuteScalarQuery(SqlConnection conn, string Query)
+        public object ExecuteScalarQuery(string connstr, string Query)
         {
             object obj = new object();
             try
             {
+                conn = new SqlConnection(connstr);
                 cmd = new SqlCommand(Query, conn);
                 if (conn.State == ConnectionState.Closed)
                     conn.Open();
@@ -97,11 +101,12 @@ namespace WebAPIDemo.Utility
             return obj;
         }
 
-        public object ExecuteScalarQuery(SqlConnection conn, SqlCommand cmd)
+        public object ExecuteScalarQuery(string connstr, SqlCommand cmd)
         {
             object obj = new object();
             try
             {
+                conn = new SqlConnection(connstr);
                 if (conn.State == ConnectionState.Closed)
                     conn.Open();
                 cmd.Connection = conn;
@@ -123,12 +128,13 @@ namespace WebAPIDemo.Utility
         #endregion
 
         #region GetDataSet 
-        public DataSet GetDataSet(SqlConnection conn, string Query)
+        public DataSet GetDataSet(string connstr, string Query)
         {
             SqlDataAdapter sda = new SqlDataAdapter();
             DataSet ds = new DataSet();
             try
             {
+                conn = new SqlConnection(connstr);
                 cmd = new SqlCommand(Query, conn);
                 if (conn.State == ConnectionState.Closed)
                     conn.Open();
@@ -149,12 +155,13 @@ namespace WebAPIDemo.Utility
             return ds;
         }
 
-        public DataSet GetDataSet(SqlConnection conn, SqlCommand cmd)
+        public DataSet GetDataSet(string connstr, SqlCommand cmd)
         {
             SqlDataAdapter sda = new SqlDataAdapter();
             DataSet ds = new DataSet();
             try
             {
+                conn = new SqlConnection(connstr);
                 if (conn.State == ConnectionState.Closed)
                     conn.Open();
                 cmd.Connection = conn;
