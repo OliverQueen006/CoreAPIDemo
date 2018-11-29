@@ -11500,23 +11500,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Prime\\.nuget\\packages\\": {},
+    "C:\\Users\\hiten\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\DotNetProject\\Hiten\\Asp.NetCore\\New\\CoreAPIDemo-master\\CoreAPIDemo-master\\CoreAPI\\CoreAPIDemo\\CoreAPI\\WebAPIDemo\\WebAPIDemo.csproj",
+      "projectUniqueName": "c:\\Hiten\\DemoProject\\APIDemo\\New\\CoreAPIDemo\\CoreAPI\\WebAPIDemo\\WebAPIDemo.csproj",
       "projectName": "WebAPIDemo",
-      "projectPath": "c:\\DotNetProject\\Hiten\\Asp.NetCore\\New\\CoreAPIDemo-master\\CoreAPIDemo-master\\CoreAPI\\CoreAPIDemo\\CoreAPI\\WebAPIDemo\\WebAPIDemo.csproj",
-      "packagesPath": "C:\\Users\\Prime\\.nuget\\packages\\",
-      "outputPath": "c:\\DotNetProject\\Hiten\\Asp.NetCore\\New\\CoreAPIDemo-master\\CoreAPIDemo-master\\CoreAPI\\CoreAPIDemo\\CoreAPI\\WebAPIDemo\\obj\\",
+      "projectPath": "c:\\Hiten\\DemoProject\\APIDemo\\New\\CoreAPIDemo\\CoreAPI\\WebAPIDemo\\WebAPIDemo.csproj",
+      "packagesPath": "C:\\Users\\hiten\\.nuget\\packages\\",
+      "outputPath": "c:\\Hiten\\DemoProject\\APIDemo\\New\\CoreAPIDemo\\CoreAPI\\WebAPIDemo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Prime\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\hiten\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
