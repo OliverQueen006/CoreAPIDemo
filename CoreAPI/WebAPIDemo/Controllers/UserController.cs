@@ -24,17 +24,17 @@ namespace WebAPIDemo.Controllers
             return Ok(data);
         }
 
-        [HttpGet]
-        public ActionResult GetUserByName([FromBody]string name)
+        [HttpGet("GetUserByName")]
+        public ActionResult GetUserByName([FromQuery]string name)
         {
             var data = DbClientFactory<UserRepository>.Instance.GetUserByName(appSettings.Value.ConnStr, name);
             if (data != null)
             {
-                return NotFound();
+                return Ok(data);
             }
             else
             {
-                return Ok(data);
+                return NotFound();
             }
         }
     }

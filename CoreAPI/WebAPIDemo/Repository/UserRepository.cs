@@ -26,7 +26,7 @@ namespace WebAPIDemo.Repository
             cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "usp_tb_User";//Name of Stored Procedure
-            cmd.Parameters.AddWithValue("@Name",Name);
+            cmd.Parameters.AddWithValue("@UserName",Name);
             cmd.Parameters.AddWithValue("@Mode", 2);
             return sqlacc.GetDataSet(connectionstr, cmd);
         }
