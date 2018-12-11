@@ -18,10 +18,24 @@ namespace WebAPIDemo.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetUser()
+        public ActionResult GetUser()
         {
             var data = DbClientFactory<UserRepository>.Instance.GetAllUser(appSettings.Value.ConnStr.ToString());
             return Ok(data);
+        }
+
+        [HttpGet]
+        public ActionResult GetUserByName([FromBody]string name)
+        {
+            var data = DbClientFactory<UserRepository>.Instance.GetUserByName(appSettings.Value.ConnStr, name);
+            if (data != null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(data);
+            }
         }
     }
 }
