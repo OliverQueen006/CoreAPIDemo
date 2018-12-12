@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 using WebAPIDemo.Models;
 
 namespace WebAPIDemo
@@ -28,6 +29,10 @@ namespace WebAPIDemo
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.Configure<CustomSettingModel>(Configuration.GetSection("CustomSettings"));
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v0.1", new Info { Title = "CoreAPIDemo", Version = "0.1",Description="A simple Web API Demo in DotNet Core using ADO.NET." });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,9 +47,12 @@ namespace WebAPIDemo
                 app.UseHsts();
             }
 
-            
-
             app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v0.1/swagger.json", "CoreAPIDemo (v0.1)");
+            });
             app.UseMvc();
         }
     }
