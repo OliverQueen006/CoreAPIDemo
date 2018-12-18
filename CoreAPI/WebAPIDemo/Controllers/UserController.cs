@@ -24,18 +24,45 @@ namespace WebAPIDemo.Controllers
             return Ok(data);
         }
 
-        [HttpGet("GetUserByName")]
+        [HttpGet("bn")]
         public ActionResult GetUserByName([FromQuery]string name)
         {
-            var data = DbClientFactory<UserRepository>.Instance.GetUserByName(appSettings.Value.ConnStr, name);
+            var data = DbClientFactory<UserRepository>.Instance.GetByName(appSettings.Value.ConnStr, name);
             if (data != null)
             {
                 return Ok(data);
             }
-            else
+            return NotFound();
+        }
+
+        [HttpPost("add")]
+        public ActionResult AddUser(UserModel usermodel, bool InsertOrUpdate)
+        {
+            object result = DbClientFactory<UserRepository>.Instance.AddEdit(appSettings.Value.ConnStr, usermodel, InsertOrUpdate);
+            if (result != null)
             {
-                return NotFound();
+                if (!string.IsNullOrEmpty(result.ToString()) && result.ToString() == "1")
+                {
+                    return Ok("Operation Successful.");
+                }
+                return Ok("Some Problem occurs.Please try again later.");
             }
+            return BadRequest(result);
+        }
+
+        [HttpPost("del")]
+        public ActionResult Delete(int UserId)
+        {
+            object result = DbClientFactory<UserRepository>.Instance.Delete(appSettings.Value.ConnStr, UserId);
+            if (result != null)
+            {
+                if (!string.IsNullOrEmpty(result.ToString()) && result.ToString() == "1")
+                {
+                    return Ok("Operation Successful.");
+                }
+                return Ok("Some Problem occurs.Please try again later.");
+            }
+            return BadRequest(result);
         }
     }
 }
