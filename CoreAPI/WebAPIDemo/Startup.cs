@@ -33,6 +33,9 @@ namespace WebAPIDemo
             {
                 c.SwaggerDoc("v0.1", new Info { Title = "CoreAPIDemo", Version = "0.1",Description="A simple Web API Demo in DotNet Core using ADO.NET." });
             });
+            services.AddCors(o => o.AddPolicy("MyCORSPolicy",builder => {
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +56,7 @@ namespace WebAPIDemo
             {
                 c.SwaggerEndpoint("/swagger/v0.1/swagger.json", "CoreAPIDemo (v0.1)");
             });
+            app.UseCors("MyCORSPolicy");
             app.UseMvc();
         }
     }

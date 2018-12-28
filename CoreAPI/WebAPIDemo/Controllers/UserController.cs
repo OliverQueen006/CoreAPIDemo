@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using WebAPIDemo.Models;
@@ -7,6 +8,7 @@ using WebAPIDemo.Utility;
 
 namespace WebAPIDemo.Controllers
 {
+    // [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class UserController : ControllerBase

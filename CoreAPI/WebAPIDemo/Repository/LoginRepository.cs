@@ -19,7 +19,7 @@ namespace WebAPIDemo.Repository
             cmd.Parameters.AddWithValue("@EmailId", EmailId);
             cmd.Parameters.AddWithValue("@Password", Password);
             cmd.Parameters.AddWithValue("@Mode", 6);
-            return sqlacc.ExecuteScalarQuery(connectionstr, cmd);
+            return sqlacc.ExecuteNonQuery(connectionstr, cmd);
         }
     }
 }
